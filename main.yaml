@@ -1,4 +1,8 @@
 ---
+- name: install haproxy
+  hosts: server
+  remote_user: root
+  tasks:
     - name: Ensure dependencies are installed
       apt: name={{ item }} state=present
       with_items:
@@ -15,3 +19,39 @@
         name: haproxy
         state: started
         enabled: yes
+
+- name: install nebula
+  hosts: server
+  remote_user: root
+  tasks:
+    - name: Ensure dependencies are installed
+      apt: name={{ item }} state=present
+      with_items:
+        - nebula
+      when: ansible_os_family == "Debian"
+
+    - name: Ensure nebula conf is set
+      template: 
+        src: templates/nebula.yaml.j2 
+        dest: /etc/nebula/nebula.yaml
+
+    - name: Ensure nebula is started
+      service:  
+        name: nebula
+        state: started
+        enabled: yes
+
+- name: install openconnect
+  hosts: server
+  remote_user: root
+  tasks:
+
+- name: install zinc
+  hosts: server
+  remote_user: root
+  tasks:
+
+- name: install shadowsocks
+  hosts: server
+  remote_user: root
+  tasks:

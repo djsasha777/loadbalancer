@@ -4,13 +4,13 @@ pki:
   key: /opt/nebula/lighthouse.key
 
 static_host_map:
-  "192.168.49.1": ["91.149.218.39:4242"]
+  "{{ nebula.localIp }}": ["{{ dnsIp }}:4242"]
 
 lighthouse:
   am_lighthouse: true
   interval: 60
   hosts:
-    - "192.168.49.1"
+    - "{{ nebula.localIp }}"
 
 listen:
   host: 0.0.0.0
@@ -34,7 +34,6 @@ tun:
   unsafe_routes:
 
 logging:
-
   level: info
   format: text
 

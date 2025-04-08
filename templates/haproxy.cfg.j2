@@ -39,7 +39,7 @@ backend main
  mode tcp
  option ssl-hello-chk
  
-{% for host in hostos %}
+{% for host in haproxy %}
 #{{ host.name }}
  acl {{ host.name }}  req.ssl_sni -i {{ host.name }}.{{ dnsName }}
  use-server {{ host.name }} if {{ host.name }}

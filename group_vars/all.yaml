@@ -3,7 +3,7 @@
 dnsName: spongo.ru
 dnsIp: 91.149.218.39
 
-hostos:
+haproxy:
   - name: www
     ip: 192.168.49.2
     port: 8888
@@ -44,3 +44,6 @@ hostos:
   - name: switch2
     ip: 192.168.49.2
     port: 8887
+
+nebula:
+  localIp: 192.168.49.1
