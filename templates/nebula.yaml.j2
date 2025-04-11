@@ -1,7 +1,7 @@
 pki:
-  ca: /opt/nebula/ca.crt
-  cert: /opt/nebula/lighthouse.crt
-  key: /opt/nebula/lighthouse.key
+  ca: {{ nebula.dir}}/ca.crt
+  cert: {{ nebula.dir}}/lighthouse.crt
+  key: {{ nebula.dir}}/lighthouse.key
 
 static_host_map:
   "{{ nebula.localIp }}": ["{{ dnsIp }}:4242"]
