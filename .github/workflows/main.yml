@@ -19,17 +19,15 @@ jobs:
         run: |
             python -m pip install ansible
 
-      - name: sec
-        shell: bash
+      - name: Set up SSH
         run: |
-            echo $PASS > key && chmod 600 key
-        env:
-          PASS: ${{ secrets.PRIVATE}}
+          echo "${{ secrets.PRIVATE }}" > key.pem
+          chmod 600 private_key.pem
 
       - name: connect
         shell: bash
         run: |
-            ansible-playbook test.yaml -i hosts.yaml --key-file=key
+            ansible-playbook test.yaml -i hosts.yaml --key-file=key.pem
         env:
           ANSIBLE_HOST_KEY_CHECKING: 'False'
 
