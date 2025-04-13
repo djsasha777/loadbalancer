@@ -7,10 +7,12 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Check out repository code
-        uses: actions/checkout@v4
-      - name: Perform ansible playbook to deploy
-        uses: actions-ansible@v2
+      - name: Play Ansible Playbook
+        uses: arillso/action.playbook@master
         with:
-          playbook: ./test.yaml
-          inventory: ./hosts.yaml
+          playbook: test.yaml
+          inventory: hosts.yaml
+          galaxy_file: requirements.yml
+        env:
+          ANSIBLE_HOST_KEY_CHECKING: 'false'
+          ANSIBLE_DEPRECATION_WARNINGS: 'false'
