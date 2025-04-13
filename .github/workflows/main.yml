@@ -19,10 +19,16 @@ jobs:
         run: |
             python -m pip install ansible
 
-      - name: Print Ansible version
+      - name: Pass
         shell: bash
         run: |
-            ansible-playbook test.yaml -i hosts.yaml --ansible_ssh_pass=$APASS
+            touch pass.txt && echo "APASS" > pass.txt
         env:
           APASS: ${{ secrets.PASSWORD }}
+
+      - name: connect
+        shell: bash
+        run: |
+            ansible-playbook test.yaml -i hosts.yaml --conn-pass-file=pass.txt
+        env:
           ANSIBLE_HOST_KEY_CHECKING: 'False'
