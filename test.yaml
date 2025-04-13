@@ -1,5 +1,6 @@
 ---
 - name: test
+  hosts: server
   tasks:
     - name: Ensure dependencies are installed
       apt: name={{ item }} state=present
