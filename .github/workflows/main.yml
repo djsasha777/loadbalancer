@@ -21,7 +21,7 @@ jobs:
 
       - name: "Install ssl"
         run: |
-            apt install openssh-client -y
+            sudo apt install openssh-client -y
 
       - name: "ssh"
         run: |
