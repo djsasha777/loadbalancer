@@ -1,6 +1,6 @@
 ---
 server:
   hosts:
-    91.149.218.39:
+    79.143.30.73:
   vars:
       ansible_user: root

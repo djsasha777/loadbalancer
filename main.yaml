@@ -1,37 +1,29 @@
 ---
 - name: install haproxy
   hosts: server
-  remote_user: root
   tasks:
-    - name: Ensure dependencies are installed
-      apt: name={{ item }} state=present
-      with_items:
-        - haproxy
-      when: ansible_os_family == "Debian"
+    # - name: Ensure dependencies are installed
+    #   apt: name={{ item }} state=present
+    #   with_items:
+    #     - haproxy
+    #   when: ansible_os_family == "Debian"
 
-    - name: Ensure haproxy conf is set
-      template: 
-        src: templates/haproxy.cfg.j2 
-        dest: /etc/haproxy/haproxy.cfg
+    # - name: Ensure haproxy conf is set
+    #   template: 
+    #     src: templates/haproxy.cfg.j2 
+    #     dest: /etc/haproxy/haproxy.cfg
 
-    - name: Ensure haproxy is started
-      service:  
-        name: haproxy
-        state: started
-        enabled: yes
+    # - name: Ensure haproxy is started
+    #   service:  
+    #     name: haproxy
+    #     state: started
+    #     enabled: yes
 
-- name: install nebula
-  hosts: server
-  remote_user: root
-  tasks:
-    - name: Enable sysctl ip_forwarding
-      when: enable_ip_forward
-      sysctl:
-        name: net.ipv4.ip_forward
-        value: "1"
-      state: present
-      notify:
-       - Restart_nebula
+    # - name: Enable sysctl ip_forwarding
+    #   when: enable_ip_forward
+    #   sysctl:
+    #     name: net.ipv4.ip_forward
+    #     value: "1"
 
     - name: Create nebula config directory
       ansible.builtin.file:
@@ -94,12 +86,12 @@
         state: started
         enabled: yes
 
-- name: install openconnect
-  hosts: server
-  remote_user: root
-  tasks:
+# - name: install openconnect
+#   hosts: server
+#   remote_user: root
+#   tasks:
 
-- name: install shadowsocks
-  hosts: server
-  remote_user: root
-  tasks:
+# - name: install shadowsocks
+#   hosts: server
+#   remote_user: root
+#   tasks:
