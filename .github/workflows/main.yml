@@ -20,12 +20,10 @@ jobs:
             python -m pip install ansible
 
       - name: "Install ssl"
-        shell: bash
         run: |
-            apt-get update -y && apt-get install openssh-client -y
+            apt install openssh-client -y
 
       - name: "ssh"
-        shell: bash
         run: |
             eval $(ssh-agent -s)
             echo "${{ secrets.PRIVATE }}" | tr -d '\r' | ssh-add -
