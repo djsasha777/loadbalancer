@@ -21,13 +21,9 @@ jobs:
       - name: Run playbook
         uses: dawidd6/action-ansible-playbook@v3
         with:
-          # Required, playbook filepath
           playbook: test.yaml
-          # Optional, directory where playbooks live
-          directory: ./
-          inventory: |
-            [server]
-            91.149.218.39
-
-          # Optional, SSH known hosts file content
+          key: ${{secrets.PRIVATE}}
           known_hosts: ${{ secrets.PUB }}
+          options: |
+            --inventory hosts.yaml
+            --verbose
