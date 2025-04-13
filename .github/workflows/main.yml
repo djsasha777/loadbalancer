@@ -14,5 +14,5 @@ jobs:
           playbook: test.yaml
           inventory: |
             [server]
-            srv1 ansible_ssh_host=91.149.218.39 ansible_ssh_port=22 ansible_ssh_user=root keepalived_priority=100
+            91.149.218.39
           key: ${{secrets.SSH_PRIVATE_KEY}}
