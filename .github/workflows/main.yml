@@ -22,7 +22,7 @@ jobs:
       - name: sec
         shell: bash
         run: |
-            echo $PAS > pass.txt && cat pass.txt
+            echo $PASS > pass.txt && cat pass.txt
         env:
           PASS: ${{ env.PAS }}
 
