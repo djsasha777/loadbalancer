@@ -15,3 +15,4 @@ jobs:
           inventory: |
             [server]
             91.149.218.39
+          key: ${{secrets.SSH_PRIVATE_KEY}}
