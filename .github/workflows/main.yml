@@ -22,7 +22,7 @@ jobs:
       - name: Set up SSH
         run: |
           echo "${{ secrets.PRIVATE }}" > key.pem
-          chmod 600 private_key.pem
+          chmod 600 key.pem
 
       - name: connect
         shell: bash
