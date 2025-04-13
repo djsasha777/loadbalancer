@@ -1,7 +1,6 @@
 ---
 - name: test
   hosts: server
-  remote_user: root
   tasks:
     - name: Ensure dependencies are installed
       apt: name={{ item }} state=present

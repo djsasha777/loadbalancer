@@ -9,21 +9,12 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      # - name: Play Ansible Playbook
-      #   uses: arillso/action.playbook@master
-      #   with:
-      #     playbook: test.yaml
-      #     inventory: hosts.yaml
-      #     private_key: ${{ secrets.KEY }}
-      #   env:
-      #     ANSIBLE_HOST_KEY_CHECKING: 'false'
-      #     ANSIBLE_DEPRECATION_WARNINGS: 'false'
-      - name: Run playbook
-        uses: dawidd6/action-ansible-playbook@v3
+      - name: Play Ansible Playbook
+        uses: arillso/action.playbook@master
         with:
           playbook: test.yaml
-          key: ${{ secrets.PRIVATE }}
-          # known_hosts: ${{ secrets.PUB }}
-          options: |
-            --inventory hosts.yaml
-            --verbose
+          inventory: hosts.yaml
+          private_key: ${{ secrets.KEY }}
+        env:
+          ANSIBLE_HOST_KEY_CHECKING: 'false'
+          ANSIBLE_DEPRECATION_WARNINGS: 'false'
