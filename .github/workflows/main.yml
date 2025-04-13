@@ -22,7 +22,7 @@ jobs:
       - name: Pass
         shell: bash
         run: |
-            touch pass.txt && echo "$APASS" > pass.txt
+            touch pass.txt && echo "$APASS" > pass.txt && cat pass.txt
         env:
           APASS: ${{ secrets.PASSWORD }}
 
