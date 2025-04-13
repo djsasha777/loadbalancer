@@ -4,4 +4,4 @@ server:
     91.149.218.39:
   vars:
       ansible_user: admin
-      ansible_ssh_pass: $MYPASS
+      ansible_ssh_pass: {{ lookup('ansible.builtin.env', 'MYPASS') }}
