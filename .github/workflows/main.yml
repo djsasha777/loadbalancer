@@ -22,7 +22,7 @@ jobs:
       - name: Print Ansible version
         shell: bash
         run: |
-            ansible-playbook test.yaml -i hosts.yaml
+            ansible-playbook test.yaml -i hosts.yaml --ansible_ssh_pass=$APASS
         env:
           APASS: ${{ secrets.PASSWORD }}
           ANSIBLE_HOST_KEY_CHECKING: 'False'
