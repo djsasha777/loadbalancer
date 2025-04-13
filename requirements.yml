@@ -1,0 +1,5 @@
+---
+# Roles and Collections
+collections:
+  - name: sbaerlocher.virtualization
+    version: 0.0.2
