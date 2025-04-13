@@ -22,7 +22,7 @@ jobs:
       - name: sec
         shell: bash
         run: |
-            echo ${{ secrets.PASSWORD }} | base64 -d > pass.txt && cat pass.txt
+            echo ${{ env.PAS }} > pass.txt && cat pass.txt
 
       - name: connect
         shell: bash
