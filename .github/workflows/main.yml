@@ -32,12 +32,12 @@ jobs:
             ssh-keyscan 91.149.218.39 >> ~/.ssh/known_hosts
             chmod 644 ~/.ssh/known_hosts
 
-      # - name: connect
-      #   shell: bash
-      #   run: |
-      #       ansible-playbook test.yaml -i hosts.yaml
-      #   env:
-      #     ANSIBLE_HOST_KEY_CHECKING: 'False'
+      - name: connect
+        shell: bash
+        run: |
+            ansible-playbook test.yaml -i hosts.yaml
+        env:
+          ANSIBLE_HOST_KEY_CHECKING: 'False'
 
 
           
