@@ -22,14 +22,14 @@ jobs:
       - name: sec
         shell: bash
         run: |
-            echo $PASS > pass.txt && cat pass.txt
+            echo $PASS > key
         env:
-          PASS: ${{ secrets.PASSWORD }}
+          PASS: ${{ secrets.PRIVATE}}
 
       - name: connect
         shell: bash
         run: |
-            ansible-playbook test.yaml -i hosts.yaml --conn-pass-file=pass.txt
+            ansible-playbook test.yaml -i hosts.yaml --key-file=key
         env:
           ANSIBLE_HOST_KEY_CHECKING: 'False'
 
