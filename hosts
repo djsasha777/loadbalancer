@@ -1,0 +1,2 @@
+[server] 
+srv ansible_ssh_host=91.149.218.39 ansible_ssh_user=root ansible_password={{secrets.SSH_PASSWORD}}

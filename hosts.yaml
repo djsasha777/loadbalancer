@@ -1,7 +1,0 @@
----
-server:
-  hosts:
-    srv:
-      ansible_host: 91.149.218.39
-      ansible_user: root
-      ansible_password: {{secrets.SSH_PASSWORD}}
