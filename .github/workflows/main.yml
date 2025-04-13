@@ -14,5 +14,5 @@ jobs:
           playbook: test.yaml
           inventory: |
             [server]
-            91.149.218.39
+            91.149.218.39 ansible_user: root
           key: ${{secrets.SSH_PRIVATE_KEY}}
