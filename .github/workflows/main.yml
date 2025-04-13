@@ -7,21 +7,21 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      # - uses: actions/checkout@v4
 
-      - name: "Install Python"
-        uses: actions/setup-python@v4
-        with:
-            python-version: "3.12"
+      # - name: "Install Python"
+      #   uses: actions/setup-python@v4
+      #   with:
+      #       python-version: "3.12"
 
-      - name: "Install packages"
-        shell: bash
-        run: |
-            python -m pip install ansible
+      # - name: "Install packages"
+      #   shell: bash
+      #   run: |
+      #       python -m pip install ansible
 
-      - name: "Install ssl"
-        run: |
-            sudo apt install openssh-client -y
+      # - name: "Install ssl"
+      #   run: |
+      #       sudo apt install openssh-client -y
 
       - name: "ssh"
         run: |
@@ -31,13 +31,14 @@ jobs:
             chmod 700 ~/.ssh
             ssh-keyscan 91.149.218.39 >> ~/.ssh/known_hosts
             chmod 644 ~/.ssh/known_hosts
+            ls ~/.ssh
 
-      - name: connect
-        shell: bash
-        run: |
-            ansible-playbook test.yaml -i hosts.yaml
-        env:
-          ANSIBLE_HOST_KEY_CHECKING: 'False'
+      # - name: connect
+      #   shell: bash
+      #   run: |
+      #       ansible-playbook test.yaml -i hosts.yaml
+      #   env:
+      #     ANSIBLE_HOST_KEY_CHECKING: 'False'
 
 
           
