@@ -19,16 +19,9 @@ jobs:
         run: |
             python -m pip install ansible
 
-      - name: Pass
-        shell: bash
-        run: |
-            touch pass.txt && printenv $APASS > pass.txt && cat pass.txt
-        env:
-          APASS: ${{ secrets.PASSWORD }}
-
       - name: connect
         shell: bash
         run: |
-            ansible-playbook test.yaml -i hosts.yaml --conn-pass-file=pass.txt
+            ansible-playbook test.yaml -i hosts.yaml
         env:
           ANSIBLE_HOST_KEY_CHECKING: 'False'
