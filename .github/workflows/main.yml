@@ -20,6 +20,8 @@ jobs:
             python -m pip install ansible
 
       - name: Print Ansible version
-        run: echo "eeeeeeeeeeee"
+        shell: bash
+        run: |
+            echo "$APASS"
         env:
           APASS: ${{ secrets.PASSWORD }}
