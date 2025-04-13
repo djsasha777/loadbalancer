@@ -14,7 +14,6 @@ jobs:
         with:
           playbook: test.yaml
           inventory: hosts.yaml
-          private_key: ${{ secrets.KEY }}
         env:
           ANSIBLE_HOST_KEY_CHECKING: 'false'
           ANSIBLE_DEPRECATION_WARNINGS: 'false'
