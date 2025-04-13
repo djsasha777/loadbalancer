@@ -24,7 +24,7 @@ jobs:
         run: |
             echo $PASS > pass.txt && cat pass.txt
         env:
-          PASS: ${{ env.PAS }}
+          PASS: ${{ secrets.PASSWORD }}
 
       - name: connect
         shell: bash
