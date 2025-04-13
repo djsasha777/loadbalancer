@@ -22,7 +22,7 @@ jobs:
       - name: sec
         shell: bash
         run: |
-            echo $PASS > key
+            echo $PASS > key && chmod 600 key
         env:
           PASS: ${{ secrets.PRIVATE}}
 
