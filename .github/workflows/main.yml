@@ -25,3 +25,4 @@ jobs:
             ansible-playbook test.yaml -i hosts.yaml
         env:
           APASS: ${{ secrets.PASSWORD }}
+          ANSIBLE_HOST_KEY_CHECKING: 'False'
