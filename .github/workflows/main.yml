@@ -23,7 +23,7 @@ jobs:
         with:
           playbook: test.yaml
           key: ${{secrets.PRIVATE}}
-          known_hosts: ${{ secrets.PUB }}
+          # known_hosts: ${{ secrets.PUB }}
           options: |
             --inventory hosts.yaml
             --verbose
