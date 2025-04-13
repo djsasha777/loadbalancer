@@ -14,5 +14,5 @@ jobs:
           directory: "."
           playbook: "test.yaml"
           ssh_key: ${{secrets.PRIVATE}}
-          ssh_key_file_name: secret_id_rsa
+          ssh_key_file_name: id_rsa
           verbose: "4"
