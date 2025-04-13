@@ -2,6 +2,3 @@
 server:
   hosts:
     91.149.218.39:
-  vars:
-    ansible_ssh_common_args: >-
-        -o StrictHostKeyChecking=no
