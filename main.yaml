@@ -99,11 +99,6 @@
   remote_user: root
   tasks:
 
-- name: install zinc
-  hosts: server
-  remote_user: root
-  tasks:
-
 - name: install shadowsocks
   hosts: server
   remote_user: root
