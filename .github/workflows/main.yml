@@ -13,7 +13,7 @@ jobs:
         with:
           playbook: test.yaml
           inventory: hosts.yaml
-          galaxy_file: requirements.yml
+          galaxy_file: requirements.yaml
         env:
           ANSIBLE_HOST_KEY_CHECKING: 'false'
           ANSIBLE_DEPRECATION_WARNINGS: 'false'
