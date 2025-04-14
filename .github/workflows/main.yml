@@ -9,18 +9,23 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: sec
-        shell: bash
-        run: |
-            eval $(ssh-agent -s)
-            echo "${{ secrets.PRIVATE}}" | tr -d '\r' | ssh-add -
-            mkdir -p ~/.ssh
-            chmod 700 ~/.ssh
-            ssh-keyscan 91.149.218.39 >> ~/.ssh/known_hosts
-            chmod 644 ~/.ssh/known_hosts
-            scp main.yaml root@91.149.218.39:~
-        env:
-          PASS: ${{ secrets.PRIVATE}}
+      - uses: tanmancan/action-setup-ssh-agent-key@1.0.0
+        with:
+          ssh-private-key: ${{ secrets.PRIVATE }}
+        run: ssh -T root@91.149.218.39 "pwd"
+
+      # - name: sec
+      #   shell: bash
+      #   run: |
+      #       eval $(ssh-agent -s)
+      #       echo "${{ secrets.PRIVATE}}" | tr -d '\r' | ssh-add -
+      #       mkdir -p ~/.ssh
+      #       chmod 700 ~/.ssh
+      #       ssh-keyscan 91.149.218.39 >> ~/.ssh/known_hosts
+      #       chmod 644 ~/.ssh/known_hosts
+      #       scp main.yaml root@91.149.218.39:~
+      #   env:
+      #     PASS: ${{ secrets.PRIVATE}}
 
       # - uses: Hugozys/ansible-deploy@master
       #   with:
