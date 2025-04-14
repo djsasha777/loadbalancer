@@ -12,7 +12,7 @@ jobs:
       - name: sec
         shell: bash
         run: |
-            apt-get install openssh-client -y
+            sudo apt-get install openssh-client -y
             eval $(ssh-agent -s)
             echo "$PASS" | tr -d '\r' | ssh-add -
             mkdir -p ~/.ssh
