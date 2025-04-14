@@ -11,14 +11,15 @@ jobs:
 
       - uses: tanmancan/action-setup-ssh-agent-key@1.0.0
         with:
-          ssh-private-key: ${{ secrets.PRIVATE }}
+          ssh-auth-sock: /tmp/my_auth.sock
+          ssh-private-key: ${{ secrets.PRIVATE}}
+          ssh-public-key: ${{ secrets.PUB }}
 
       - name: sec
         shell: bash
         run: |
           scp main.yaml root@91.149.218.39:~
-        env:
-            PASS: ${{ secrets.PRIVATE}}
+
       # - name: sec
       #   shell: bash
       #   run: |
