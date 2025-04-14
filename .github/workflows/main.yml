@@ -12,9 +12,8 @@ jobs:
       - name: sec
         shell: bash
         run: |
-            sudo apt-get install openssh-client -y
             eval $(ssh-agent -s)
-            echo "$PASS" | tr -d '\r' | ssh-add -
+            echo "${{ secrets.PRIVATE}}" | tr -d '\r' | ssh-add -
             mkdir -p ~/.ssh
             chmod 700 ~/.ssh
             ssh-keyscan 91.149.218.39 >> ~/.ssh/known_hosts
