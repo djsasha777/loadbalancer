@@ -18,8 +18,7 @@ jobs:
       - name: sec
         shell: bash
         run: |
-          scp main.yaml root@91.149.218.39:~
-
+          ssh -o StrictHostKeyChecking=no root@91.149.218.39 uptime
       # - name: sec
       #   shell: bash
       #   run: |
