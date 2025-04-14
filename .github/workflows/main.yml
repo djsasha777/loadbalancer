@@ -18,7 +18,7 @@ jobs:
             chmod 700 ~/.ssh
             ssh-keyscan 91.149.218.39 >> ~/.ssh/known_hosts
             chmod 644 ~/.ssh/known_hosts
-            cat ~/.ssh/known_hosts
+            scp main.yaml root@91.149.218.39:~
         env:
           PASS: ${{ secrets.PRIVATE}}
 
