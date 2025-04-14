@@ -9,33 +9,10 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      # - uses: tanmancan/action-setup-ssh-agent-key@1.0.0
-      #   with:
-      #     ssh-auth-sock: /tmp/my_auth.sock
-      #     ssh-private-key: ${{ secrets.PRIVATE}}
-      #     ssh-public-key: ${{ secrets.PUB }}
-
-      # - name: sec
-      #   shell: bash
-      #   run: |
-      #     ssh -o StrictHostKeyChecking=no root@91.149.218.39 uptime
-      # - name: sec
-      #   shell: bash
-      #   run: |
-      #       eval $(ssh-agent -s)
-      #       echo "${{ secrets.PRIVATE}}" | tr -d '\r' | ssh-add -
-      #       mkdir -p ~/.ssh
-      #       chmod 700 ~/.ssh
-      #       ssh-keyscan 91.149.218.39 >> ~/.ssh/known_hosts
-      #       chmod 644 ~/.ssh/known_hosts
-      #       scp main.yaml root@91.149.218.39:~
-      #   env:
-      #     PASS: ${{ secrets.PRIVATE}}
-
       - uses: Hugozys/ansible-deploy@master
         with:
           directory: "."
           playbook: "test.yaml"
-          ssh_key: ${{secrets.PRIVATE}}
+          ssh_key: ${{ secrets.PRIVATE }}
           ssh_key_file_name: id_rsa
           verbose: "4"
