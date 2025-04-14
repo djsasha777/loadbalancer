@@ -17,7 +17,7 @@ jobs:
             mkdir -p ~/.ssh
             chmod 700 ~/.ssh
             ssh-keyscan 91.149.218.39 >> ~/.ssh/known_hosts
-            chmod 644 
+            chmod 644 ~/.ssh/known_hosts
             cat ~/.ssh/known_hosts
         env:
           PASS: ${{ secrets.PRIVATE}}
