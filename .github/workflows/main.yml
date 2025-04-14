@@ -9,11 +9,11 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - uses: tanmancan/action-setup-ssh-agent-key@1.0.0
-        with:
-          ssh-auth-sock: /tmp/my_auth.sock
-          ssh-private-key: ${{ secrets.PRIVATE}}
-          ssh-public-key: ${{ secrets.PUB }}
+      # - uses: tanmancan/action-setup-ssh-agent-key@1.0.0
+      #   with:
+      #     ssh-auth-sock: /tmp/my_auth.sock
+      #     ssh-private-key: ${{ secrets.PRIVATE}}
+      #     ssh-public-key: ${{ secrets.PUB }}
 
       - name: sec
         shell: bash
@@ -32,10 +32,10 @@ jobs:
       #   env:
       #     PASS: ${{ secrets.PRIVATE}}
 
-      # - uses: Hugozys/ansible-deploy@master
-      #   with:
-      #     directory: "."
-      #     playbook: "test.yaml"
-      #     ssh_key: ${{secrets.PRIVATE}}
-      #     ssh_key_file_name: id_rsa
-      #     verbose: "4"
+      - uses: Hugozys/ansible-deploy@master
+        with:
+          directory: "."
+          playbook: "test.yaml"
+          ssh_key: ${{secrets.PRIVATE}}
+          ssh_key_file_name: id_rsa
+          verbose: "4"
