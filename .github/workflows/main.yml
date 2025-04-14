@@ -16,7 +16,7 @@ jobs:
       - name: sec
         shell: bash
         run: |
-          ls ~/.ssh
+          scp main.yaml root@91.149.218.39:~
         env:
             PASS: ${{ secrets.PRIVATE}}
       # - name: sec
