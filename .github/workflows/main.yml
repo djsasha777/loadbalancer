@@ -15,10 +15,10 @@ jobs:
       #     ssh-private-key: ${{ secrets.PRIVATE}}
       #     ssh-public-key: ${{ secrets.PUB }}
 
-      - name: sec
-        shell: bash
-        run: |
-          ssh -o StrictHostKeyChecking=no root@91.149.218.39 uptime
+      # - name: sec
+      #   shell: bash
+      #   run: |
+      #     ssh -o StrictHostKeyChecking=no root@91.149.218.39 uptime
       # - name: sec
       #   shell: bash
       #   run: |
