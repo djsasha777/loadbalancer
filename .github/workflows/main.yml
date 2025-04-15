@@ -4,7 +4,7 @@ on:
     branches: [ "main" ]
   workflow_dispatch:
 jobs:
-  build:
+  provision:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -12,7 +12,7 @@ jobs:
       - uses: Hugozys/ansible-deploy@master
         with:
           directory: "."
-          playbook: "test.yaml"
+          playbook: "roles/nebula.yaml"
           ssh_key: ${{ secrets.PRIVATE }}
           ssh_key_file_name: id_rsa
           verbose: "4"
