@@ -4,7 +4,7 @@
   roles:
     - nebula
 
-- name: haproxy
-  hosts: server
-  roles:
-    - haproxy
+# - name: haproxy
+#   hosts: server
+#   roles:
+#     - haproxy
