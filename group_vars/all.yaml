@@ -1,7 +1,7 @@
 ---
 
 dnsName: spongo.ru
-dnsIp: 79.143.30.73
+dnsIp: 82.148.31.229
 
 haproxy:
   - name: www
@@ -58,13 +58,3 @@ nebula:
       ip: 192.168.49.2/24
     mac:
       ip: 192.168.49.3/24
-
-# nebula_additional_member_certs:
-#   additional-client-1:
-#     ip: 172.20.0.51/24
-#     groups:
-#       - group-1
-#       - group-2
-#   additional-client-2:
-#     ip: 172.20.0.52/24
-#     groups: []
