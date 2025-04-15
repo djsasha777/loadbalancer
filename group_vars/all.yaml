@@ -52,10 +52,19 @@ nebula:
   caName: SPONGO INC
   duration: 175200h
   clients:
-    - lighthouse:
+    lighthouse:
       ip: 192.168.49.1/24
-    - router:
+    router:
       ip: 192.168.49.2/24
-    - mac:
+    mac:
       ip: 192.168.49.3/24
 
+# nebula_additional_member_certs:
+#   additional-client-1:
+#     ip: 172.20.0.51/24
+#     groups:
+#       - group-1
+#       - group-2
+#   additional-client-2:
+#     ip: 172.20.0.52/24
+#     groups: []
