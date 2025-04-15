@@ -55,14 +55,12 @@
         src: templates/nebula.yaml.j2 
         dest: "{{ nebula.dir }}/config.yaml"
         mode: "0644"
-      notify: Restart nebula service
 
     - name: Template nebula systemd unit
       template:
         src: nebula.service.j2
         dest: "/etc/systemd/system/nebula.service"
         mode: "0644"
-      notify: Restart nebula service
 
     - name: Ensure nebula is started
       service:  
