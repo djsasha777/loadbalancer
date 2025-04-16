@@ -10,10 +10,11 @@
     - name: install packages
       ansible.builtin.apt:
         name:
+          - gnutls-bin
           - openconnect
         state: present
 
-    - name: Create nebula config directory
+    - name: Create openconnect config directory
       ansible.builtin.file:
         path: "/etc/openconnect"
         state: directory
@@ -24,7 +25,7 @@
         src: templates/oc.ca.tmpl.j2
         dest: /etc/openconnect/oc.ca.tmpl
 
-    - name: Ensure haproxy conf is set
+    - name: Ensure openconnect conf is set
       template: 
         src: templates/oc.server.tmpl.j2
         dest: /etc/openconnect/oc.server.tmpl
