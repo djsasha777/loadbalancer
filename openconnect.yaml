@@ -11,6 +11,7 @@
       ansible.builtin.apt:
         name:
           - gnutls-bin
+          - apache2-utils
           - openconnect
         state: present
 
