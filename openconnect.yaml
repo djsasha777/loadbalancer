@@ -61,10 +61,10 @@
           htpasswd -b -c /etc/openconnect/passwd openconnect $ocpasswd
         creates: "/etc/openconnect/passwd"
 
-    - name: template config
-      template: 
-        src: templates/oc.config.j2
-        dest: /etc/ocserv/ocserv.conf
+    # - name: template config
+    #   template: 
+    #     src: templates/oc.config.j2
+    #     dest: /etc/ocserv/ocserv.conf
 
     - name: Ensure openconnect is started
       service:  
