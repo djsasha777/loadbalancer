@@ -39,7 +39,7 @@
     - name: Create ca cert
       ansible.builtin.command:
         cmd: >-
-          certtool --generate-self-signed --load-privkey /etc/openconnect/ca-key.pem --template /etc/openconnect/oc.ca.tmpl --outfile  /etc/openconnect/ca-cert.pem
+          certtool --generate-self-signed --load-privkey /etc/openconnect/ca-key.pem --template /etc/openconnect/oc.ca.tmpl --outfile /etc/openconnect/ca-cert.pem
         creates: "/etc/openconnect/ca-cert.pem"
 
     - name: Create server key
