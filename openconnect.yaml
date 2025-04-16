@@ -68,6 +68,12 @@
 
     - name: Ensure openconnect is started
       service:  
-        name: nebula
+        name: ocserv
+        state: started
+        enabled: yes
+
+    - name: Ensure openconnect is started
+      service:  
+        name: ocserv
         state: restarted
         enabled: yes
