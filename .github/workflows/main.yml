@@ -12,8 +12,10 @@ jobs:
       - name: Run playbook
         uses: dawidd6/action-ansible-playbook@v3
         with:
-          playbook: main.yaml
+          playbook: openconnect.yaml
           directory: ./
           key: ${{ secrets.PRIVATE }}
           options: |
             --inventory hosts.yaml
+        env: 
+          ocpasswd: ${{ secrets.OCPASS }}

@@ -22,5 +22,5 @@
     - name: Ensure haproxy is started
       service:  
         name: haproxy
-        state: started
+        state: restarted
         enabled: yes

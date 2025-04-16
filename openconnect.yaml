@@ -1,0 +1,61 @@
+---
+- name: install openconnect
+  hosts: server
+  tasks:
+
+    - name: apt update
+      ansible.builtin.apt:
+        update_cache: yes
+
+    - name: install packages
+      ansible.builtin.apt:
+        name:
+          - openconnect
+        state: present
+
+    - name: Create nebula config directory
+      ansible.builtin.file:
+        path: "/etc/openconnect"
+        state: directory
+        mode: "0755"
+
+    - name: template ca
+      template: 
+        src: templates/oc.ca.tmpl.j2
+        dest: /etc/openconnect/oc.ca.tmpl
+
+    - name: Ensure haproxy conf is set
+      template: 
+        src: templates/oc.server.tmpl.j2
+        dest: /etc/openconnect/oc.server.tmpl
+
+    - name: Create ca cert
+      ansible.builtin.command:
+        cmd: >-
+          certtool --generate-privkey --outfile /etc/openconnect/ca-key.pem
+          certtool --generate-self-signed --load-privkey /etc/openconnect/ca-key.pem --template /etc/openconnect/oc.ca.tmpl --outfile  /etc/openconnect/ca-cert.pem
+        creates: "/etc/openconnect/ca-cert.pem"
+
+    - name: Create server cert
+      ansible.builtin.command:
+        cmd: >-
+          certtool --generate-privkey --outfile /etc/openconnect/server-key.pem
+          certtool --generate-certificate --load-privkey /etc/openconnect/server-key.pem --load-ca-certificate /etc/openconnect/ca-cert.pem --load-ca-privkey /etc/openconnect/ca-key.pem --template server.tmpl --outfile /etc/openconnect/server-cert.pem
+        creates: "/etc/openconnect/server-cert.pem"
+
+    - name: Create passwd
+      ansible.builtin.command:
+        cmd: >-
+          htpasswd -b -c /etc/openconnect/passwd openconnect $ocpasswd
+        creates: "/etc/openconnect/passwd"
+
+    - name: template config
+      template: 
+        src: templates/oc.config.j2
+        dest: /etc/ocserv/ocserv.conf
+
+    - name: Ensure openconnect is started
+      service:  
+        name: nebula
+        state: restarted
+        enabled: yes

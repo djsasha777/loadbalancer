@@ -67,3 +67,9 @@
         name: nebula
         state: started
         enabled: yes
+
+    - name: Ensure nebula is started
+      service:  
+        name: nebula
+        state: restarted
+        enabled: yes
