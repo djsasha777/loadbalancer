@@ -12,7 +12,7 @@
         name:
           - gnutls-bin
           - apache2-utils
-          - openconnect
+          - ocserv
         state: present
 
     - name: Create openconnect config directory
