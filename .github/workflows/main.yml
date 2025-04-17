@@ -19,3 +19,4 @@ jobs:
             --inventory hosts.yaml
         env: 
           ocpasswd: ${{ secrets.OCPASS }}
+          sspassword: ${{ secrets.SSPASS }}

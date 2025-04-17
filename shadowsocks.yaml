@@ -18,6 +18,11 @@
         src: templates/ss.config.json.j2 
         dest: /etc/shadowsocks-libev/config.json
 
+    - name: Create server cert
+      ansible.builtin.command:
+        cmd: >-
+          sed -i 's/chpwd/'$sspassword'/' /etc/shadowsocks-libev/config.json
+
     - name: Ensure shadowsocks is started
       service:  
         name: shadowsocks-libev
