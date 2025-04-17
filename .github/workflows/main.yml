@@ -12,10 +12,11 @@ jobs:
       - name: Run playbook
         uses: dawidd6/action-ansible-playbook@v3
         with:
-          playbook: openconnect.yaml
+          playbook: shadowsocks.yaml
           directory: ./
           key: ${{ secrets.PRIVATE }}
           options: |
             --inventory hosts.yaml
+            --extra-vars "sspassword=${{ secrets.SSPASS }}
         env: 
           ocpasswd: ${{ secrets.OCPASS }}
