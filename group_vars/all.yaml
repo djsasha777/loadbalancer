@@ -20,10 +20,6 @@ haproxy:
     ip: 127.0.0.1
     port: 9389
     proxy: false
-  - name: tinc
-    ip: 127.0.0.1
-    port: 4244
-    proxy: false
   - name: argo
     ip: 12.12.12.1
     port: 443

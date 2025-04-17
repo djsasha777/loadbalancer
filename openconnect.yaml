@@ -52,7 +52,7 @@
     - name: Create server cert
       ansible.builtin.command:
         cmd: >-
-          certtool --generate-certificate --load-privkey /etc/openconnect/server-key.pem --load-ca-certificate /etc/openconnect/ca-cert.pem --load-ca-privkey /etc/openconnect/ca-key.pem --template oc.server.tmpl --outfile /etc/openconnect/server-cert.pem
+          certtool --generate-certificate --load-privkey /etc/openconnect/server-key.pem --load-ca-certificate /etc/openconnect/ca-cert.pem --load-ca-privkey /etc/openconnect/ca-key.pem --template /etc/openconnect/oc.server.tmpl --outfile /etc/openconnect/server-cert.pem
         creates: "/etc/openconnect/server-cert.pem"
 
     - name: Create passwd
@@ -61,19 +61,19 @@
           htpasswd -b -c /etc/openconnect/passwd openconnect $ocpasswd
         creates: "/etc/openconnect/passwd"
 
-    # - name: template config
-    #   template: 
-    #     src: templates/oc.config.j2
-    #     dest: /etc/ocserv/ocserv.conf
+    - name: template config
+      template: 
+        src: templates/oc.config.j2
+        dest: /etc/ocserv/ocserv.conf
 
     - name: Ensure openconnect is started
       service:  
         name: ocserv
-        state: started
+        state: stopped
         enabled: yes
 
     - name: Ensure openconnect is started
       service:  
         name: ocserv
-        state: restarted
+        state: started
         enabled: yes
