@@ -9,3 +9,6 @@ ADD PRIVATE SSH KEY to GITHUB SECRETS
    paste public key there
    made empty line in the end
 5. cat ./ssh/id_rsa.pub and paste to the ./ssh/authorized_keys on server
+
+
+            --extra-vars "sspassword=${{ secrets.SSPASS }}
