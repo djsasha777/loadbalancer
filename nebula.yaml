@@ -1,6 +1,8 @@
 ---
 - name: install nebula
   hosts: server
+  vars:
+    ansible_user: root
   tasks:
 
     - name: Enable sysctl ip_forwarding

@@ -2,5 +2,3 @@
 server:
   hosts:
     82.148.31.229:
-  vars:
-    ansible_user: root

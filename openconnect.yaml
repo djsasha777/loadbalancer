@@ -1,6 +1,8 @@
 ---
 - name: install openconnect
   hosts: server
+  vars:
+    ansible_user: root
   tasks:
 
     - name: apt update
@@ -58,7 +60,7 @@
     - name: Create passwd
       ansible.builtin.command:
         cmd: >-
-          htpasswd -b -c /etc/openconnect/passwd openconnect $ocpasswd
+          htpasswd -b -c /etc/openconnect/passwd openconnect {{ ocpasswd }}
         creates: "/etc/openconnect/passwd"
 
     - name: template config

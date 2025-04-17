@@ -1,6 +1,8 @@
 ---
 - name: install haproxy
   hosts: server
+  vars:
+    ansible_user: root
   tasks:
 
     - name: apt update
