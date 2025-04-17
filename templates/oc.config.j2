@@ -1,5 +1,6 @@
 
-auth = "plain[passwd=/etc/openconnect/passwd]"
+#auth = "plain[passwd=/etc/openconnect/passwd]"
+auth = "pam[gid-min=1000]"
 
 tcp-port = 9443
 udp-port = 9443
