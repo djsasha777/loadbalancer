@@ -21,7 +21,7 @@
     - name: Create server cert
       ansible.builtin.command:
         cmd: >-
-          sed -i 's/chpwd/'$sspassword'/' /etc/shadowsocks-libev/config.json
+          sed -i 's/chpwd/$sspassword/' /etc/shadowsocks-libev/config.json
 
     - name: Ensure shadowsocks is started
       service:  
