@@ -17,4 +17,4 @@ jobs:
           key: ${{ secrets.PRIVATE }}
           options: |
             --inventory hosts.yaml
-            --extra-vars sspassword=${{ secrets.SSPASS }} ocpasswd=${{ secrets.OCPASS }}
+            --extra-vars "sspassword=${{ secrets.SSPASS }} ocpasswd=${{ secrets.OCPASS }}"
