@@ -27,11 +27,15 @@
       template: 
         src: templates/oc.ca.tmpl.j2
         dest: /etc/openconnect/oc.ca.tmpl
+      notify:
+        - delCa
 
     - name: Ensure openconnect conf is set
       template: 
         src: templates/oc.server.tmpl.j2
         dest: /etc/openconnect/oc.server.tmpl
+      notify:
+        - delCert
 
     - name: Create ca key
       ansible.builtin.command:
@@ -80,4 +84,13 @@
         state: started
         enabled: yes
 
+  handlers:
+    - name: delCa
+      ansible.builtin.command:
+        cmd: >-
+          rm /etc/openconnect/ca-cert.pem
 
+    - name: delCert
+      ansible.builtin.command:
+        cmd: >-
+          rm /etc/openconnect/server-cert.pem
