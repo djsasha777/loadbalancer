@@ -28,14 +28,16 @@
         src: templates/oc.ca.tmpl.j2
         dest: /etc/openconnect/oc.ca.tmpl
       notify:
-        - delCa
+        - reCa
+        - restart
 
     - name: Ensure openconnect conf is set
       template: 
         src: templates/oc.server.tmpl.j2
         dest: /etc/openconnect/oc.server.tmpl
       notify:
-        - delCert
+        - reCert
+        - restart
 
     - name: Create ca key
       ansible.builtin.command:
@@ -85,12 +87,18 @@
         enabled: yes
 
   handlers:
-    - name: delCa
+    - name: reCa
       ansible.builtin.command:
         cmd: >-
-          rm /etc/openconnect/ca-cert.pem
+          certtool --generate-self-signed --load-privkey /etc/openconnect/ca-key.pem --template /etc/openconnect/oc.ca.tmpl --outfile /etc/openconnect/ca-cert.pem
 
-    - name: delCert
+    - name: reCert
       ansible.builtin.command:
         cmd: >-
-          rm /etc/openconnect/server-cert.pem
+          certtool --generate-certificate --load-privkey /etc/openconnect/server-key.pem --load-ca-certificate /etc/openconnect/ca-cert.pem --load-ca-privkey /etc/openconnect/ca-key.pem --template /etc/openconnect/oc.server.tmpl --outfile /etc/openconnect/server-cert.pem
+
+    - name: restart
+      service:  
+        name: ocserv
+        state: restarted
+        enabled: yes
