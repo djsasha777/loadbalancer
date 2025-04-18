@@ -1,7 +1,7 @@
 ---
 
 dnsName: spongo.ru
-dnsIp: 82.148.31.229
+dnsIp: 91.149.218.39
 
 haproxy:
   - name: www
@@ -75,3 +75,4 @@ openconnect:
   cn: SPONGO OC
   organization: SPONGO INC
   pam: true
+  dnsName: vpn.spongo.ru
