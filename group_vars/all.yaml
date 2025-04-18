@@ -8,9 +8,9 @@ haproxy:
     ip: 192.168.49.2
     port: 8888
     proxy: false
-  - name: openconnect
+  - name: vpn
     ip: 127.0.0.1
-    port: 8443
+    port: 9443
     proxy: true
   - name: nebula
     ip: 127.0.0.1
