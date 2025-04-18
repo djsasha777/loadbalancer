@@ -23,7 +23,7 @@
         state: directory
         mode: "0755"
 
-    - name: template ca
+    - name: template ca template
       template: 
         src: templates/oc.ca.tmpl.j2
         dest: /etc/openconnect/oc.ca.tmpl
@@ -31,7 +31,7 @@
         - reCa
         - restart
 
-    - name: Ensure openconnect conf is set
+    - name: template server cert template
       template: 
         src: templates/oc.server.tmpl.j2
         dest: /etc/openconnect/oc.server.tmpl
